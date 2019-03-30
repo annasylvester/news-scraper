@@ -11,14 +11,19 @@ const ArticleSchema = new Schema({
         required: true,
         unique: true
     },
-    description: {
+    link: {
         type: String,
         required: true,
         unique: true
     },
+    description: {
+        type: String,
+        required: false,
+        unique: true
+    },
     saved: {
         type: Boolean,
-        required: true,
+        required: false,
         default: false
     },
     comments: [{
