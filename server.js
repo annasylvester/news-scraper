@@ -16,14 +16,18 @@ var htmlRoutes = require("./routes/html-routes");
 const newsRoutes = require("./routes/news-routes")
 
 // JSON
-app.use(express.urlencoded({ extended: true}));
+app.use(express.urlencoded({
+    extended: true
+}));
 app.use(express.json());
 
 // Access public folder
 app.use(express.static("./public/assets"));
 
 // Handlebars set up
-app.engine("handlebars", exphbs({ defaultLayout: "main"}));
+app.engine("handlebars", exphbs({
+    defaultLayout: "main"
+}));
 app.set("view engine", "handlebars");
 
 // Routing
@@ -31,11 +35,11 @@ app.use(htmlRoutes);
 app.use(newsRoutes);
 
 // DB set up
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/news-scraper";
 mongoose.connect(MONGODB_URI);
+console.log("connected to db")
 
 // Start it up!
-app.listen(PORT, function() {
+app.listen(PORT, function () {
     console.log("Listening on port: " + PORT);
 })
-
