@@ -16,6 +16,11 @@ const ArticleSchema = new Schema({
         required: true,
         unique: true
     },
+    description: {
+        type: String,
+        required: true,
+        unique: true
+    },
     imageURL: {
         type: String,
         required: true,

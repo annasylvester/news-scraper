@@ -7,8 +7,8 @@ router.get("/", (req, res) => {
     res.render("index");
 });
 
-router.get("/saved", (req, res) => {
-    res.render("saved");
+router.get("/pinned", (req, res) => {
+    res.render("pinned");
 });
 
 module.exports = router;
