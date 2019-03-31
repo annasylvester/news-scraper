@@ -13,7 +13,7 @@ const app = express();
 
 // Require Routes
 var htmlRoutes = require("./routes/html-routes");
-const newsRoutes = require("./routes/news-routes")
+const apiRoutes = require("./routes/api-routes")
 
 // JSON
 app.use(express.urlencoded({
@@ -32,7 +32,7 @@ app.set("view engine", "handlebars");
 
 // Routing
 app.use(htmlRoutes);
-app.use(newsRoutes);
+app.use(apiRoutes);
 
 // DB set up
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/news-scraper";
