@@ -12,8 +12,8 @@ $(document).ready(function() {
 	  // For each one
 	  for (var i = 0; i < data.length; i++) {
 	    // Display the information on the page
-        $("#scrape-results").prepend("<div class='result-div'><div class='row'><div class='col'><img class='result-image' src='" + data[i].imageURL + "'></div><div class='col'><p class='result-text'>" +data[i].title + "<br>" + data[i].description +
-	    	"</p><button class='pin-article button is-info is-medium' data-id='" + data[i]._id + "'><span class='icon'><i class='fa fa-map-pin'></i></span>Pin Article</button></div></div></div>");
+	    $("#scrape-results").prepend("<div class='result-div'><img class='result-pic' src='" + data[i].imageURL + "'><div class='result-text'><div class='article-title'>" +data[i].title + "</div><br><div class='artcle-description'>" + data[i].description +
+	    	"</div></div><button class='save-article button is-success is-medium' data-id='" + data[i]._id + "'><span class='icon'><i class='fa fa-map-pin'></i></span>Pin Article</button></div></div><br>");
 	  }
 	});
 
