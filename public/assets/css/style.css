@@ -97,3 +97,7 @@ span.icon {
     padding-right: 25px;
     padding-left: 15px;
 }
+
+.button {
+    background-color: #0c6b00 !important;
+}

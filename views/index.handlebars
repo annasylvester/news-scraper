@@ -1,3 +1,4 @@
+<!-- NavBar -->
 <nav class="navbar ">
     <div class="navbar-brand">
         <div class="navbar-burger burger" data-target="navMenu">
@@ -19,7 +20,7 @@
             <div class="navbar-item">
                 <div class="field is-grouped">
                     <p class="control">
-                        <a class="button is-primary" href="/scrape">
+                        <a id="new-scrape-button" class="button is-primary" href="/scrape">
                             <span class="icon">
                                 <i class="fa fa-download"></i>
                             </span>
@@ -32,6 +33,7 @@
     </div>
 </nav>
 
+<!-- Jumbotron -->
 <section class="hero is-info">
     <div class="hero-body">
         <div class="container">
@@ -39,7 +41,7 @@
                 <ul>
                     <li><a id="home" class="navbar-item" href="/">Home</a></li>
                     <li><a class="navbar-item" href="/pinned">Pinned Articles</a></li>
-                    <li><a class="button is-success navbar-item" href="/scrape">Get New Articles</a></li>
+                    <li><a id="new-scrape-button" class="button is-success navbar-item" href="/scrape">Get New Articles</a></li>
                 </ul>
             </div>
             <h1 id="hero-title" class="title">
@@ -52,6 +54,7 @@
     </div>
 </section>
 
+<!-- Results Div -->
 <section class="section">
   <div class="container">
     <h1 class="title">Article Results</h1>
@@ -59,14 +62,17 @@
   </div>
 </section>
 
+<!-- Footer -->
 <footer class="footer">
     <div class="container">
         <div class="content has-text-centered">
             <p>
                 <strong>National Park News Scraper</strong>
-                <h4 style="font-size: 12pt">All data scraped from <a
-                        href="https://www.nationalparkstraveler.org/latest-news">National Parks Traveler Site</a></h4>
+                <h4 style="font-size: 12pt">All data scraped from 
+                    <a href="https://www.nationalparkstraveler.org/latest-news">National Parks Traveler Site</a></h4>
             </p>
         </div>
     </div>
 </footer>
+
+<script src="/js/home.js"></script>
