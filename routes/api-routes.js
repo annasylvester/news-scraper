@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const cheerio = require("cheerio");
 const axios = require("axios");
-var Comments = require("../models/comments");
+let Comments = require("../models/comments");
 const Article = require("../models/articles");
 
 
@@ -56,6 +56,8 @@ router.get("/scrape", function (req, res) {
                 err => res.send(err)
             );
         });
+        // Reload the page so that newly scraped articles will be shown on the page
+    res.redirect("/");
     });
 });
 
@@ -119,55 +121,54 @@ router.get("/articles/:id", function (req, res) {
             }
         });
 });
-// // Create a new comment
-// router.post("/comment/:id", function(req, res) {
-//     // Create a new comment and pass the req.body to the entry
-//     var newComment = new Comment(req.body);
-//     // And save the new comment the db
-//     newComment.save(function(error, newComment) {
-//       // Log any errors
-//       if (error) {
-//         console.log(error);
-//       }
-//       // Otherwise
-//       else {
-//         // Use the article id to find and update it's comment
-//         Article.updateOne({ "_id": req.params.id }, { $push: { "comments": newComment._id }}, { new: true })
-//         // Execute the above query
-//         .exec(function(err, doc) {
-//           // Log any errors
-//           if (err) {
-//             console.log(err);
-//           }
-//           else {
-//             console.log("doc: ", doc);
-//             // Or send the document to the browser
-//             res.send(doc);
-//           }
-//         });
-//       }
-//     });
-//   });
-  
-//   // Remove a saved article
-//   router.post("/unsave/:id", function(req, res) {
-//     // Use the article id to find and update it's saved property to false
-//     Article.updateOne({ "_id": req.params.id }, { "saved": false })
-//     // Execute the above query
-//     .exec(function(err, doc) {
-//       // Log any errors
-//       if (err) {
-//         console.log(err);
-//       }
-//       // Log result
-//       else {
-//         console.log("Article Removed");
-//       }
-//     });
-//     res.redirect("/pinned");
-//   });
-  
 
-
+// Create a new comment on pinned post
+router.post("/comment/:id", function(req, res) {
+    // Create a new comment and pass the req.body to the entry
+    let newComment = new Comment(req.body);
+    // And save the new comment the db
+    newComment.save(function(error, newComment) {
+      // Log any errors
+      if (error) {
+        console.log(error);
+      }
+      // Otherwise
+      else {
+        // Use the article id to find and update it's comment
+        Article.updateOne({ "_id": req.params.id }, { $push: { "comments": newComment._id }}, { new: true })
+        // Execute the above query
+        .exec(function(err, doc) {
+          // Log any errors
+          if (err) {
+            console.log(err);
+          }
+          else {
+            console.log("doc: ", doc);
+            // Or send the document to the browser
+            res.send(doc);
+          }
+        });
+      }
+    });
+  });
+  
+  // Remove a saved article
+  router.post("/unsave/:id", function(req, res) {
+    // Use the article id to find and update it's saved property to false
+    Article.updateOne({ "_id": req.params.id }, { "saved": false })
+    // Execute the above query
+    .exec(function(err, doc) {
+      // Log any errors
+      if (err) {
+        console.log(err);
+      }
+      // Log result
+      else {
+        console.log("Article Removed");
+      }
+    });
+    res.redirect("/pinned");
+  });
+  
 
 module.exports = router;

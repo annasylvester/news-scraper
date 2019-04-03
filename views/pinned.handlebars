@@ -1,9 +1,6 @@
 <!-- NavBar -->
 <nav class="navbar ">
     <div class="navbar-brand">
-        <div class="navbar-item">
-            <img src="/assets/img/npr-logo.jpg" alt="NPR Logo">
-        </div>
         <div class="navbar-burger burger" data-target="navMenu">
             <span></span>
             <span></span>
@@ -23,13 +20,15 @@
 </nav>
 
 <!-- Jumbotron -->
-<section class="hero is-info">
+<section class="hero is-info" style="background-color: #3dc128">
     <div class="hero-body">
-        <div class="container">
+        <div class="container" style="text-align: center">
             <div class="box dropdown is-pulled-right">
                 <ul>
-                    <li><a class="navbar-item" href="/">Home</a></li>
-                    <li><a id="saved" class="navbar-item" href="/saved">Saved Articles</a></li>
+                    <li><a id="home" class="navbar-item" href="/">Home</a></li>
+                    <li><a class="navbar-item" href="/pinned">Pinned Articles</a></li>
+                    <li><a id="new-scrape-button" class="button is-success navbar-item" href="/scrape">Get New
+                            Articles</a></li>
                 </ul>
             </div>
             <h1 id="hero-title" class="title">
@@ -49,6 +48,7 @@
         <div id="pinned-results"></div>
     </div>
 </section>
+
 
 
 <div class="modal">
@@ -87,5 +87,7 @@
         </div>
     </div>
 </footer> --}}
+
+
 
 <script src="/js/pinned.js"></script>
