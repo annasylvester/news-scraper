@@ -1,17 +1,16 @@
 $(document).ready(function () {
 
-    // Responsive hamburger menu
+    // Hamburger
     $(".navbar-burger").on("click", function () {
         $(".navbar-burger").toggleClass("is-active");
         $(".dropdown").toggle();
         $(".dropdown").toggleClass("is-open");
     });
 
-    // Display saved articles on page load
+    // Display pinned articles
     $.getJSON("/all", function (data) {
-        // For each one
         for (let i = 0; i < data.length; i++) {
-            // if article has been marked as saved
+            // if article is pinned
             if (data[i].saved === true) {
                 // Display the information on the page
                 $("#pinned-results").append("<div class='saved-div'><img class='result-pic' src='" + data[i].imageURL + "'><div class='result-text'><div class='article-title'>" + data[i].title + "</div><br><div class='artcle-description'>" + data[i].description +
@@ -19,22 +18,16 @@ $(document).ready(function () {
                     data[i]._id + "'>Remove</a><a class='comments-button button is-info is-medium' data-id='" + data[i]._id +
                     "'><span class='icon'><i class='fa fa-comments'></i></span>Comments</a></div>");
             }
-
-            // $("#pinned-results").append("<div class='saved-div'><img class='result-pic' src='" + data[i].imageURL + "'><p class='result-text'><div class='article-title'>" + data[i].title + "</div><br><div class='article-description'>" + data[i].description +
-            //     "</div></div><a class='unsave-button button is-danger is-medium' data-id='" +
-            //     data[i]._id + "'>Remove</a><a class='comments-button button is-info is-medium' data-id='" + data[i]._id +
-            //     "'><span class='icon'><i class='fa fa-comments'></i></span>Comments</a></div>");
-            //}
         }
     });
 
-    // Comment button opens the comments modal & displays any comments
+    // Comment button opens comments modal
     $(document).on("click", ".comments-button", function () {
-        // Open the comments modal
+        // Open modal
         $(".modal").toggleClass("is-active");
-        // Get article by article ID
+        // Get article
         let articleID = $(this).attr("data-id");
-        // Now make an ajax call for the Article
+        // Ajax call for the article
         $.ajax({
             method: "GET",
             url: "/all/" + articleID
@@ -84,9 +77,8 @@ $(document).ready(function () {
         $(".modal").toggleClass("is-active");
     });
 
-    // Deleting Comments
+    // Delete Comments
     $(document).on("click", ".delete-comment", function () {
-        // delete comment
     });
 
     // Removing Saved Articles
