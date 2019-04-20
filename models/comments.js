@@ -1,7 +1,10 @@
+// Dependencies
 const mongoose = require('mongoose');
 
+// Create Schema
 const Schema = mongoose.Schema;
 
+// Comments Schema
 const CommentSchema = new Schema({
   body: String
 });
